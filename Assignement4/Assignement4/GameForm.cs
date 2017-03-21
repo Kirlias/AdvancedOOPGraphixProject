@@ -14,6 +14,8 @@ namespace Assignement4
     {
         Player player;
         Blocks block;
+        public int level = 1;
+        public int drawcheck = 0;
         public GameForm()
         {
             InitializeComponent();
@@ -23,17 +25,25 @@ namespace Assignement4
         {
             this.WindowState = FormWindowState.Maximized;
             player = new Player(this.DisplayRectangle);
-            block = new Blocks(this.DisplayRectangle);
+            block = new Blocks(this.DisplayRectangle, level);
         }
 
         private void timer_Tick(object sender, EventArgs e)
         {
+            if(drawcheck == 10)
+            {
+                drawcheck = 0;
+            }
+            block.Move();
+            drawcheck++;
             Invalidate();
         }
 
         private void GameForm_Paint(object sender, PaintEventArgs e)
         {
             player.Draw(e.Graphics);
+            block.Draw(e.Graphics);
+
         }
 
         private void GameForm_KeyDown(object sender, KeyEventArgs e)
