@@ -195,9 +195,10 @@ namespace Assignement4
                     player.yVelocity = -1 * (block.yVelocity);
                 }
                 //if the player hits the bottom of the frame
-                else if(player.displayArea.Bottom >= this.DisplayRectangle.Bottom)
-                {   
+                else if(player.displayArea.Bottom >= this.DisplayRectangle.Height)
+                {
                     //stop the player from moving
+                    player.setDisplayY(this.DisplayRectangle.Height - player.displayArea.Height);
                     player.yVelocity = 0;
                 }
 
@@ -205,7 +206,7 @@ namespace Assignement4
                 else if (player.displayArea.X < block.displayArea.X || player.displayArea.X > block.displayArea.X+block.width)
                 {
                     //start moving down
-                    player.yVelocity = 15;
+                    player.yVelocity = 20;
                 }
 
                 //if the player hits a block
@@ -213,10 +214,7 @@ namespace Assignement4
                     player.displayArea.Bottom > 15)
                 {
                     player.yVelocity = -1 * (block.yVelocity);
-                }
-
-                
-                
+                }                
                 //if the player is in the air
                 else
                 {
@@ -272,7 +270,7 @@ namespace Assignement4
             string lose = "YOU LOSE!!";
             Font font = new Font("Arial", 30);
             SolidBrush brush = new SolidBrush(Color.RoyalBlue);
-            Point point = new Point(DisplayRectangle.Width/2, DisplayRectangle.Height/2 );
+            Point point = new Point(DisplayRectangle.Width/2 - 180, DisplayRectangle.Height/2 );
             graphix.DrawString(lose, font, brush, point);
         }
     }

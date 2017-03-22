@@ -79,7 +79,10 @@ namespace Assignement4
             
 
         }
-
+        public void setDisplayY(int i)
+        {
+            this.playerDisplayArea.Y = i;
+        }
         /// <summary>
         /// Pulls the player down constantly
         /// </summary>
