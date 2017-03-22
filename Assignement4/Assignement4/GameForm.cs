@@ -12,6 +12,8 @@ namespace Assignement4
 {
     public partial class GameForm : Form
     {
+        
+
         //player object
         Player player;
         HashSet<Wall> wall = new HashSet<Wall>();
@@ -79,16 +81,21 @@ namespace Assignement4
             if (checkPlayerPoints())
             {
                 level++;
+                player.points = 0;
                 resetLevel();
             }
             //redraw the whole thing
             Invalidate();
         }
 
+        //reset the board when the level is completed
         private void resetLevel()
         {
+            //stop the timer
             timer.Stop();
+            //clear the blocks
             blocks.Clear();
+            //restart the timer
             timer.Start();
 
         }
@@ -169,7 +176,9 @@ namespace Assignement4
                 if(player.displayArea.Top <= this.DisplayRectangle.Top)
                 {
                     //stop the game
+                    
                     timer.Stop();
+                    
                 }
                 else if (player.displayArea.IntersectsWith(block.displayArea))
                 {
@@ -214,11 +223,13 @@ namespace Assignement4
         public void displayInfo(Graphics graphix)
         {
             string points = string.Format("Points: {0}",player.points) ;
+            string level = string.Format("Level: {0}", this.level);
             Font font = new Font("Comic Sans MS", 22);
             SolidBrush brush = new SolidBrush(Color.Red);
-            Point point = new Point(20, 20);
-
-            graphix.DrawString(points, font, brush, point);
+            Point pntPoint = new Point(20, 20);
+            Point lvlPoint = new Point(1195,20);
+            graphix.DrawString(points, font, brush, pntPoint);
+            graphix.DrawString(level, font, brush, lvlPoint);
         }
 
         public bool checkPlayerPoints()
@@ -231,6 +242,15 @@ namespace Assignement4
             {
                 return false;
             }
+        }
+
+        public void EndGame(Graphics graphix)
+        {
+            string lose = "YOU LOSE!!";
+            Font font = new Font("Arial", 30);
+            SolidBrush brush = new SolidBrush(Color.RoyalBlue);
+            Point point = new Point(DisplayRectangle.Width/2, DisplayRectangle.Height/2 );
+            graphix.DrawString(lose, font, brush, point);
         }
     }
 }
