@@ -32,7 +32,7 @@ namespace Assignement4
             if (side.Equals("right"))
             {
                 this.side = "right";
-                wallDisplayArea.X = 1440-width;
+                wallDisplayArea.X = gameArea.Right-width;
             }
            
 

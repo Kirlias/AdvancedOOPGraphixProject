@@ -66,7 +66,7 @@ namespace Assignement4
                 case Direction.Right:
                     {
                         //keeps the player off the right wall
-                        if (!(playerDisplayArea.Right >= (gamePlayArea.Width-300)))
+                        if (!(playerDisplayArea.Right >= (gamePlayArea.Width)))
                         {
                             Console.Write(playerDisplayArea.Right);
                             //move right on x
@@ -82,6 +82,10 @@ namespace Assignement4
         public void setDisplayY(int i)
         {
             this.playerDisplayArea.Y = i;
+        }
+        public void setDisplayX(int i)
+        {
+            this.playerDisplayArea.X = i;
         }
         /// <summary>
         /// Pulls the player down constantly

@@ -35,13 +35,13 @@ namespace Assignement4
             //set some stuff
             this.gamePlayArea = gameArea;
             blockDisplayArea.Height = height;
-            blockDisplayArea.Width = 400/*gameArea.Width - 100*/;
+            blockDisplayArea.Width = 750/*gameArea.Width - 100*/;
 
             //new random object
             Random rand = new Random();
 
             //set the block to be somewhere randomly
-            blockDisplayArea.X = rand.Next(300,1040);
+            blockDisplayArea.X = rand.Next(200,800);
 
             //set a thing
             this.level = level;
