@@ -31,14 +31,14 @@ namespace Assignement4
 
             yVelocity = 1+(level * 2);
 
-            blockDisplayArea.X = gameArea.Top + 10;
+            blockDisplayArea.Y = gameArea.Bottom + 10;
             //blockDisplayArea.Y = gameArea.Left;
 
         }
 
         public void Move()
         {
-            blockDisplayArea.Y += yVelocity;
+            blockDisplayArea.Y -= yVelocity;
         }
 
         public void Draw(Graphics graphix)
