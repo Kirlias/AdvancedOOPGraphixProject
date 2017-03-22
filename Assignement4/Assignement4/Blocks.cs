@@ -50,7 +50,7 @@ namespace Assignement4
             yVelocity = (this.level*2);
 
             //where to start a block
-            blockDisplayArea.Y = gameArea.Bottom + 20;
+            blockDisplayArea.Y = gameArea.Bottom + 40;
             //blockDisplayArea.Y = gameArea.Left;
 
         }

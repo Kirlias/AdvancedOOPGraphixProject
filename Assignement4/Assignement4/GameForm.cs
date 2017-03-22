@@ -200,7 +200,22 @@ namespace Assignement4
                     //stop the player from moving
                     player.yVelocity = 0;
                 }
+
+                //if the player falls off either side of the platform
+                else if (player.displayArea.X < block.displayArea.X || player.displayArea.X > block.displayArea.X+block.width)
+                {
+                    //start moving down
+                    player.yVelocity = 15;
+                }
+
                 //if the player hits a block
+                else if((block.displayArea.Top - player.displayArea.Bottom ) < 15 && 
+                    player.displayArea.Bottom > 15)
+                {
+                    player.yVelocity = -1 * (block.yVelocity);
+                }
+
+                
                 
                 //if the player is in the air
                 else
