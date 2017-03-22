@@ -11,7 +11,9 @@ namespace Assignement4
     {
         //Variables
         public int height = 10;
-        public int width = 10000;
+        public int width;
+
+        
 
         //velocity to move up at
         public int yVelocity { get; set; }
@@ -20,18 +22,21 @@ namespace Assignement4
 
         //display stuff
         private Rectangle blockDisplayArea;
+        public Rectangle displayArea { get { return blockDisplayArea; } }
         private Rectangle gamePlayArea;
 
         public Blocks(Rectangle gameArea, int level)
         {
             this.gamePlayArea = gameArea;
             blockDisplayArea.Height = height;
-            blockDisplayArea.Width = width;
+            blockDisplayArea.Width = gameArea.Width - 100;
+            Random rand = new Random();
+            blockDisplayArea.X = rand.Next(-1*(gameArea.Width),gameArea.Width);
+            this.level = level;
 
+            yVelocity = (this.level*2);
 
-            yVelocity = 1+(level * 2);
-
-            blockDisplayArea.Y = gameArea.Bottom + 10;
+            blockDisplayArea.Y = gameArea.Bottom + 20;
             //blockDisplayArea.Y = gameArea.Left;
 
         }

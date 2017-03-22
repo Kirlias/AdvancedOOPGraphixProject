@@ -16,8 +16,11 @@ namespace Assignement4
         //directions player can move
         public enum Direction { Left, Right };
 
+        public int yVelocity { get; set; }
+
         //display stuff
         private Rectangle playerDisplayArea;
+        public Rectangle displayArea { get { return playerDisplayArea; }}
         private Rectangle gamePlayArea;
 
         /// <summary>
@@ -34,6 +37,7 @@ namespace Assignement4
             //star display area for the player
             playerDisplayArea.X = gamePlayArea.Width / 2 - (width / 2);
             playerDisplayArea.Y = gamePlayArea.Top + 50;
+            this.yVelocity = 15;
 
         }
         /// <summary>
@@ -57,9 +61,13 @@ namespace Assignement4
                         break;
                     }
             }
+            
 
         }
-
+        public void MoveViaGravity()
+        {
+            this.playerDisplayArea.Y += yVelocity;
+        }
         /// <summary>
         /// The draw method for the player
         /// </summary>
