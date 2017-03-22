@@ -13,6 +13,8 @@ namespace Assignement4
         private int height = 25;
         private int width = 25;
 
+        public int points { get; set; }
+
         //directions player can move
         public enum Direction { Left, Right };
 

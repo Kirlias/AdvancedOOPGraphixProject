@@ -76,8 +76,21 @@ namespace Assignement4
             //increments the check
             drawcheck++;
 
+            if (checkPlayerPoints())
+            {
+                level++;
+                resetLevel();
+            }
             //redraw the whole thing
             Invalidate();
+        }
+
+        private void resetLevel()
+        {
+            timer.Stop();
+            blocks.Clear();
+            timer.Start();
+
         }
 
         //when the game is drawn
@@ -96,6 +109,7 @@ namespace Assignement4
             {
                 wall.draw(e.Graphics);
             }
+            displayInfo(e.Graphics);
 
         }
 
@@ -146,6 +160,8 @@ namespace Assignement4
             //remove each block the wits the ceiling
             blocks.RemoveWhere(blockHitsCeiling);
 
+
+
             //for every block
             foreach (Blocks block in blocks)
             {
@@ -184,12 +200,35 @@ namespace Assignement4
             if(block.displayArea.Y <= this.DisplayRectangle.Top)
             {
                 //true
+                player.points += 1;
                 return true;
             }
             //if not
             else
             {
                 //false
+                return false;
+            }
+        }
+
+        public void displayInfo(Graphics graphix)
+        {
+            string points = string.Format("Points: {0}",player.points) ;
+            Font font = new Font("Comic Sans MS", 22);
+            SolidBrush brush = new SolidBrush(Color.Red);
+            Point point = new Point(20, 20);
+
+            graphix.DrawString(points, font, brush, point);
+        }
+
+        public bool checkPlayerPoints()
+        {
+            if(player.points == 20)
+            {
+                return true;
+            }
+            else
+            {
                 return false;
             }
         }
