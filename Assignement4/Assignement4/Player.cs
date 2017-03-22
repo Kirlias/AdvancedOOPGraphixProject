@@ -51,17 +51,26 @@ namespace Assignement4
                 //if direction is left
                 case Direction.Left:
                     {
-                        //move player left ont he x
-                        Console.WriteLine("Left");
-                        playerDisplayArea.X -= 25;
+                        //keeps the player off the left wall
+                        if (!(playerDisplayArea.Left <= 300))
+                        {
+                            //move player left ont he x
+                            Console.WriteLine("Left");
+                            playerDisplayArea.X -= 25;
+                        }
                         break;
                     }
                 //if direction is right
                 case Direction.Right:
                     {
-                        //move right on x
-                        Console.WriteLine("Right");
-                        playerDisplayArea.X += 25;
+                        //keeps the player off the right wall
+                        if (!(playerDisplayArea.Right >= (gamePlayArea.Width-300)))
+                        {
+                            Console.Write(playerDisplayArea.Right);
+                            //move right on x
+                            Console.WriteLine("Right");
+                            playerDisplayArea.X += 25;
+                        }
                         break;
                     }
             }

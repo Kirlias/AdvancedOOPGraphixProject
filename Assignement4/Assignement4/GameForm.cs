@@ -14,6 +14,7 @@ namespace Assignement4
     {
         //player object
         Player player;
+        HashSet<Wall> wall = new HashSet<Wall>();
         //Blocks block;
         
         //hashset for multiple platforms
@@ -39,6 +40,8 @@ namespace Assignement4
             
             //new objects
             player = new Player(this.DisplayRectangle);
+            wall.Add(new Wall(this.DisplayRectangle, "left"));
+            wall.Add(new Wall(this.DisplayRectangle, "right"));
             blocks.Add(new Blocks(this.DisplayRectangle, level));
         }
 
@@ -82,12 +85,16 @@ namespace Assignement4
         {
             //draw the player
             player.Draw(e.Graphics);
-
+            
             //draw each block
             foreach (Blocks block in blocks)
             {
                 block.Draw(e.Graphics);
 
+            }
+            foreach (Wall wall in wall)
+            {
+                wall.draw(e.Graphics);
             }
 
         }
