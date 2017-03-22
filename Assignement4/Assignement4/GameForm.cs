@@ -12,9 +12,10 @@ namespace Assignement4
 {
     public partial class GameForm : Form
     {
-        
+
 
         //player object
+        Graphics graphics;
         Player player;
         HashSet<Wall> wall = new HashSet<Wall>();
         //Blocks block;
@@ -117,6 +118,14 @@ namespace Assignement4
                 wall.draw(e.Graphics);
             }
             displayInfo(e.Graphics);
+            if (player.displayArea.Top <= this.DisplayRectangle.Top)
+            {
+                //stop the game
+
+                EndGame(e.Graphics);
+                timer.Stop();
+
+            }
 
         }
 
@@ -176,7 +185,6 @@ namespace Assignement4
                 if(player.displayArea.Top <= this.DisplayRectangle.Top)
                 {
                     //stop the game
-                    
                     timer.Stop();
                     
                 }
