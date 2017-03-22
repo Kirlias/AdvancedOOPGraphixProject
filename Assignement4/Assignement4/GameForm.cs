@@ -176,8 +176,6 @@ namespace Assignement4
             //remove each block the wits the ceiling
             blocks.RemoveWhere(blockHitsCeiling);
 
-
-
             //for every block
             foreach (Blocks block in blocks)
             {
@@ -186,8 +184,8 @@ namespace Assignement4
                 {
                     //stop the game
                     timer.Stop();
-                    
                 }
+                
                 //if the player hits the bottom of the frame
                 else if(player.displayArea.Bottom >= this.DisplayRectangle.Height)
                 {
@@ -195,30 +193,20 @@ namespace Assignement4
                     player.setDisplayY(this.DisplayRectangle.Height - player.displayArea.Height);
                     player.yVelocity = 0;
                 }
+
                 //if the player falls off either side of the platform
-                else if (player.displayArea.X < block.displayArea.X || player.displayArea.X > block.displayArea.X + block.width)
+                else if (player.displayArea.X < block.displayArea.X || player.displayArea.X > (block.displayArea.X + block.width))
                 {
                     //start moving down
                     player.yVelocity = 20;
                 }
-                //if the player hits a block
-                else if ((block.displayArea.Y - (player.displayArea.Y + player.displayArea.Height)) <= 20 &&
-                    (player.displayArea.Y + player.displayArea.Height) >= 20)
-                {
-                    //player.setDisplayY(block.displayArea.Y);
-                    player.yVelocity = -1 * (block.yVelocity);
-                }
-                
+
                 else if (player.displayArea.IntersectsWith(block.displayArea))
                 {
                     //move the player up on the plat form
                     player.yVelocity = -1 * (block.yVelocity);
                 }
-                
-
-                
-
-                               
+                              
                 //if the player is in the air
                 else
                 {
