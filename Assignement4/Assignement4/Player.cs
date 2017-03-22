@@ -20,7 +20,7 @@ namespace Assignement4
 
         //display stuff
         private Rectangle playerDisplayArea;
-        public Rectangle displayArea { get { return playerDisplayArea; }}
+        public Rectangle displayArea { get { return playerDisplayArea; } }
         private Rectangle gamePlayArea;
 
         /// <summary>
@@ -48,14 +48,18 @@ namespace Assignement4
         {
             switch (direction)
             {
+                //if direction is left
                 case Direction.Left:
                     {
+                        //move player left ont he x
                         Console.WriteLine("Left");
                         playerDisplayArea.X -= 25;
                         break;
                     }
+                //if direction is right
                 case Direction.Right:
                     {
+                        //move right on x
                         Console.WriteLine("Right");
                         playerDisplayArea.X += 25;
                         break;
@@ -64,8 +68,13 @@ namespace Assignement4
             
 
         }
+
+        /// <summary>
+        /// Pulls the player down constantly
+        /// </summary>
         public void MoveViaGravity()
         {
+            //move the player down on Y
             this.playerDisplayArea.Y += yVelocity;
         }
         /// <summary>
@@ -74,6 +83,7 @@ namespace Assignement4
         /// <param name="graphix">The grphics object to draw the player</param>
         public void Draw(Graphics graphix)
         {
+            //draw an orange circle
             SolidBrush brush = new SolidBrush(Color.Orange);
             graphix.FillEllipse(brush, playerDisplayArea);
         }
