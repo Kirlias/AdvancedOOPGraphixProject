@@ -122,6 +122,7 @@ namespace Assignement4
                 //stop the game
                 EndGame(e.Graphics);
                 timer.Stop();
+                timer.Enabled = false;
 
             }
             if (checkPlayerPoints())
@@ -174,19 +175,27 @@ namespace Assignement4
                 case Keys.Space:
                     {
                         //Basically a pause mechanic
-                        if (timer.Enabled)
+                        if (player.displayArea.Y < this.DisplayRectangle.Top)
                         {
+                            if (timer.Enabled)
+                            {
 
-                            timer.Stop();
-                            Console.WriteLine("timer stopped");
+                                timer.Stop();
+                                Console.WriteLine("timer stopped");
+                            }
+                            else
+                            {
+
+                                timer.Start();
+                                Console.WriteLine("Timer Start");
+                            }
+                            break;
                         }
                         else
                         {
-
-                            timer.Start();
-                            Console.WriteLine("Timer Start");
+                            Close();
+                            break;
                         }
-                        break;
                     }
 
             }
@@ -293,7 +302,7 @@ namespace Assignement4
         //game loss text
         public void EndGame(Graphics graphix)
         {
-            string lose = "YOU LOSE!!";
+            string lose = "YOU LOSE!! Space to close....";
             Font font = new Font("Arial", 30);
             SolidBrush brush = new SolidBrush(Color.RoyalBlue);
             Point point = new Point(DisplayRectangle.Width/2 - 180, DisplayRectangle.Height/2 );
