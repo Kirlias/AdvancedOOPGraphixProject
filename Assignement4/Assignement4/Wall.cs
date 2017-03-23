@@ -33,6 +33,8 @@ namespace Assignement4
             {
                 this.side = "right";
                 wallDisplayArea.X = gameArea.Right-width;
+                //Console.WriteLine(gameArea.Right);
+                //Console.WriteLine(width);
             }
            
 

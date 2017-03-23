@@ -19,11 +19,13 @@ namespace Assignement4
         public enum Direction { Left, Right };
 
         public int yVelocity { get; set; }
-
+        
         //display stuff
         private Rectangle playerDisplayArea;
         public Rectangle displayArea { get { return playerDisplayArea; } }
         private Rectangle gamePlayArea;
+
+        
 
         /// <summary>
         /// Constructor for the player
@@ -66,9 +68,9 @@ namespace Assignement4
                 case Direction.Right:
                     {
                         //keeps the player off the right wall
-                        if (!(playerDisplayArea.Right >= (gamePlayArea.Width)))
+                        if (!(playerDisplayArea.Right >= (gamePlayArea.Right-375)))
                         {
-                            Console.Write(playerDisplayArea.Right);
+                            //Console.Write(playerDisplayArea.Right);
                             //move right on x
                             Console.WriteLine("Right");
                             playerDisplayArea.X += 25;
