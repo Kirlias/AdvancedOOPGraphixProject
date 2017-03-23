@@ -214,21 +214,21 @@ namespace Assignement4
             //for every block
             foreach (Blocks block in blocks)
             {
-                Console.WriteLine("Player y: " + (player.displayArea.Y + player.displayArea.Height));
-                Console.WriteLine("Frame Height: " +this.DisplayRectangle.Height);
+                //Console.WriteLine("Player y: " + (player.displayArea.Y + player.displayArea.Height));
+                //Console.WriteLine("Frame Height: " +this.DisplayRectangle.Height);
 
-                if (player.displayArea.IntersectsWith(block.displayArea))
+                if ((player.yVelocity != (-1 * (block.yVelocity))) && (player.displayArea.X > block.displayArea.X && player.displayArea.X < (block.displayArea.X + block.width)))
+                {
+                    player.setDisplayY(block.displayArea.Y - player.displayArea.Height);
+                    player.yVelocity = -1 * (block.yVelocity);
+                }
+
+                else if (player.displayArea.IntersectsWith(block.displayArea))
                 {
                     //move the player up on the plat form
                     player.setDisplayY(block.displayArea.Y - player.displayArea.Height);
                     player.yVelocity = -1 * (block.yVelocity);
                     Console.WriteLine("Collision via Intersection check");
-                }
-
-                else if (player.yVelocity == -1 * (block.yVelocity) && (player.displayArea.X > block.displayArea.X && player.displayArea.X < (block.displayArea.X + block.width)))
-                {
-                    player.setDisplayY(block.displayArea.Y - player.displayArea.Height);
-                    player.yVelocity = -1 * (block.yVelocity);
                 }
 
                 //if the player hits the bottom of the frame
@@ -243,7 +243,7 @@ namespace Assignement4
 
 
                 //if the player falls off either side of the platform
-                else if (player.displayArea.X > block.displayArea.X && player.displayArea.X < (block.displayArea.X + block.width))
+                else if (!(player.displayArea.X > block.displayArea.X && player.displayArea.X < (block.displayArea.X + block.width)))
                 {
                     //start moving down
                     player.yVelocity = 20;
