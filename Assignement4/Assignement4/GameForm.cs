@@ -27,6 +27,7 @@ namespace Assignement4
         //the current game level
         public int level = 1;
 
+        public bool loss = false;
         //i dont remember why i put this here
         public int drawcheck = 0;
 
@@ -121,6 +122,7 @@ namespace Assignement4
             {
                 //stop the game
                 EndGame(e.Graphics);
+                loss = true;
                 timer.Stop();
                 timer.Enabled = false;
 
@@ -175,7 +177,7 @@ namespace Assignement4
                 case Keys.Space:
                     {
                         //Basically a pause mechanic
-                        if (player.displayArea.Y < this.DisplayRectangle.Top)
+                        if (loss == false)
                         {
                             if (timer.Enabled)
                             {
@@ -207,7 +209,7 @@ namespace Assignement4
         public void CheckCollisions()
         {
             //remove each block the wits the ceiling
-            blocks.RemoveWhere(blockHitsCeiling);
+            blocks.RemoveWhere(playerPassesBlock);
 
             //for every block
             foreach (Blocks block in blocks)
@@ -223,7 +225,7 @@ namespace Assignement4
                     Console.WriteLine("Collision via Intersection check");
                 }
 
-                else if (player.yVelocity == -1 * (block.yVelocity) && !(player.displayArea.X > block.displayArea.X && player.displayArea.X < (block.displayArea.X + block.width)))
+                else if (player.yVelocity == -1 * (block.yVelocity) && (player.displayArea.X > block.displayArea.X && player.displayArea.X < (block.displayArea.X + block.width)))
                 {
                     player.setDisplayY(block.displayArea.Y - player.displayArea.Height);
                     player.yVelocity = -1 * (block.yVelocity);
@@ -260,7 +262,7 @@ namespace Assignement4
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         //for when a block is above player
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        private bool blockHitsCeiling(Blocks block)
+        private bool playerPassesBlock(Blocks block)
         {
             //if it hits
             if(block.displayArea.Y <= player.displayArea.Y)
