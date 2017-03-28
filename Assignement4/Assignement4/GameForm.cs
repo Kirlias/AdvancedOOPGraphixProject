@@ -17,12 +17,13 @@ namespace Assignement4
         //********************************
 
         //Objects
-        Graphics graphics;
+        //Graphics graphics;
         Player player;
         HashSet<Wall> wall = new HashSet<Wall>();
         
         //hashset for multiple platforms
         HashSet<Blocks> blocks = new HashSet<Blocks>();
+
 
         //the current game level
         public int level = 1;
@@ -217,46 +218,38 @@ namespace Assignement4
                 //Console.WriteLine("Player y: " + (player.displayArea.Y + player.displayArea.Height));
                 //Console.WriteLine("Frame Height: " +this.DisplayRectangle.Height);
 
-                if ((player.yVelocity != (-1 * (block.yVelocity))) && (player.displayArea.X > block.displayArea.X && player.displayArea.X < (block.displayArea.X + block.width)))
-                {
-                    player.setDisplayY(block.displayArea.Y - player.displayArea.Height);
-                    player.yVelocity = -1 * (block.yVelocity);
-                }
+                //if ((player.yVelocity != (-1 * (block.yVelocity))) && (player.displayArea.X > block.displayArea.X && player.displayArea.X < (block.displayArea.X + block.width)))
+                //{
+                //    player.setDisplayY(block.displayArea.Y - (2*(player.displayArea.Height)));
+                //    player.yVelocity = -1 * (block.yVelocity);
+                //}
 
-                else if (player.displayArea.IntersectsWith(block.displayArea))
+                if (player.displayArea.IntersectsWith(block.displayArea))
                 {
                     //move the player up on the plat form
-                    player.setDisplayY(block.displayArea.Y - player.displayArea.Height);
+                    player.setDisplayY(block.displayArea.Y - (2*(player.displayArea.Height)));
                     player.yVelocity = -1 * (block.yVelocity);
                     Console.WriteLine("Collision via Intersection check");
                 }
 
-                //if the player hits the bottom of the frame
-                else if (player.displayArea.Y + player.displayArea.Height >= (this.DisplayRectangle.Height - 20))
-                {
-                    //stop the player from moving
-                    player.setDisplayY(this.DisplayRectangle.Height - player.displayArea.Height);
-                    player.yVelocity = 0;
-                    Console.WriteLine("Player hit the bottom");
-                    
-                }
-
-
                 //if the player falls off either side of the platform
-                else if (!(player.displayArea.X > block.displayArea.X && player.displayArea.X < (block.displayArea.X + block.width)))
+                if (!(player.displayArea.X > block.displayArea.X && player.displayArea.X < (block.displayArea.X + block.width)))
                 {
                     //start moving down
                     player.yVelocity = 20;
-                    Console.WriteLine("Player fell off platform");
+                    //Console.WriteLine("Player fell off platform");
                 }
 
-                //if the player is in the air
-                else
-                {
-                    //move down at 20 px per tick
-                    player.yVelocity = 20;
-                    //Console.WriteLine("Player is int he air");
-                }
+               
+            }
+            //if the player hits the bottom of the frame
+            if ((player.displayArea.Y + player.displayArea.Height) >= (this.DisplayRectangle.Height))
+            {
+                //stop the player from moving down
+                player.setDisplayY(this.DisplayRectangle.Height - player.displayArea.Height);
+                player.yVelocity = 0;
+                Console.WriteLine("Player hit the bottom");
+
             }
         }
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
