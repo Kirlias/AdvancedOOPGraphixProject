@@ -134,7 +134,7 @@ namespace Assignement4
                 player.points = 0;
                 LevelUp(e.Graphics);
                 resetLevel();
-                player.setDisplayY(this.DisplayRectangle.Top);
+                player.setDisplayY(this.DisplayRectangle.Top + 20);
                 player.setDisplayX(this.DisplayRectangle.Width / 2);
                 
             }
@@ -220,7 +220,7 @@ namespace Assignement4
                 {
                     //move the player up on the plat form
                     player.setDisplayY(block.displayArea.Y - (player.displayArea.Height));
-                    player.yVelocity = -1 * (block.yVelocity);
+                    player.onBlock = true;
                     Console.WriteLine("Collision via Intersection check");
                 }
 
@@ -228,12 +228,24 @@ namespace Assignement4
                 if (!(player.displayArea.X >= block.displayArea.X && player.displayArea.X <= (block.displayArea.X + block.width)))
                 {
                     //start moving down
-                    player.yVelocity = 20;
+                    player.onBlock = false;
                     //Console.WriteLine("Player fell off platform");
                 }
 
-               
+                if (player.onBlock)
+                {
+                    player.yVelocity = -1 * (block.yVelocity);
+                }
+
+                else
+                {
+                    player.yVelocity = 20;
+                }
+
             }
+
+            
+
             //if the player hits the bottom of the frame
             if ((player.displayArea.Y + player.displayArea.Height) >= (this.DisplayRectangle.Height))
             {
