@@ -35,15 +35,18 @@ namespace Assignement4
         {
             //width of the game area
             gamePlayArea.Width = 1440;
+
             //height and width of the player
             playerDisplayArea.Height = this.height;
             playerDisplayArea.Width = this.width;
+
             //star display area for the player
             playerDisplayArea.X = gamePlayArea.Width / 2 - (width / 2);
             playerDisplayArea.Y = gamePlayArea.Top + 50;
             this.yVelocity = 15;
 
         }
+
         /// <summary>
         /// Move method for the player
         /// </summary>
@@ -81,14 +84,17 @@ namespace Assignement4
             
 
         }
+
         public void setDisplayY(int i)
         {
             this.playerDisplayArea.Y = i;
         }
+
         public void setDisplayX(int i)
         {
             this.playerDisplayArea.X = i;
         }
+
         /// <summary>
         /// Pulls the player down constantly
         /// </summary>
@@ -97,6 +103,7 @@ namespace Assignement4
             //move the player down on Y
             this.playerDisplayArea.Y += yVelocity;
         }
+
         /// <summary>
         /// The draw method for the player
         /// </summary>

@@ -67,8 +67,7 @@ namespace Assignement4
 
                 //add a block
                 blocks.Add(new Blocks(this.DisplayRectangle, level));
-                //blocks.Add(new Blocks(this.DisplayRectangle, level));
-                //level++;
+                
             }
 
             //for each block that exists
@@ -215,25 +214,18 @@ namespace Assignement4
             //for every block
             foreach (Blocks block in blocks)
             {
-                //Console.WriteLine("Player y: " + (player.displayArea.Y + player.displayArea.Height));
-                //Console.WriteLine("Frame Height: " +this.DisplayRectangle.Height);
-
-                //if ((player.yVelocity != (-1 * (block.yVelocity))) && (player.displayArea.X > block.displayArea.X && player.displayArea.X < (block.displayArea.X + block.width)))
-                //{
-                //    player.setDisplayY(block.displayArea.Y - (2*(player.displayArea.Height)));
-                //    player.yVelocity = -1 * (block.yVelocity);
-                //}
+                
 
                 if (player.displayArea.IntersectsWith(block.displayArea))
                 {
                     //move the player up on the plat form
-                    player.setDisplayY(block.displayArea.Y - (2*(player.displayArea.Height)));
+                    player.setDisplayY(block.displayArea.Y - (player.displayArea.Height));
                     player.yVelocity = -1 * (block.yVelocity);
                     Console.WriteLine("Collision via Intersection check");
                 }
 
                 //if the player falls off either side of the platform
-                if (!(player.displayArea.X > block.displayArea.X && player.displayArea.X < (block.displayArea.X + block.width)))
+                if (!(player.displayArea.X >= block.displayArea.X && player.displayArea.X <= (block.displayArea.X + block.width)))
                 {
                     //start moving down
                     player.yVelocity = 20;
