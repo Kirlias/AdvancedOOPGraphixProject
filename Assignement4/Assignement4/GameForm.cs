@@ -219,7 +219,7 @@ namespace Assignement4
                 if (player.displayArea.IntersectsWith(block.displayArea))
                 {
                     //move the player up on the plat form
-                    player.setDisplayY(block.displayArea.Y - (player.displayArea.Height));
+                    player.setDisplayY(block.displayArea.Y - (player.displayArea.Height+20));
                     player.onBlock = true;
                     Console.WriteLine("Collision via Intersection check");
                 }
@@ -227,7 +227,7 @@ namespace Assignement4
                 //if the player falls off either side of the platform
                 if (!(player.displayArea.X >= block.displayArea.X && player.displayArea.X <= (block.displayArea.X + block.width)))
                 {
-                    //start moving down
+                    //start moving 
                     player.onBlock = false;
                     //Console.WriteLine("Player fell off platform");
                 }
@@ -235,6 +235,7 @@ namespace Assignement4
                 if (player.onBlock)
                 {
                     player.yVelocity = -1 * (block.yVelocity);
+                    //player.setDisplayY(player.displayArea.Y - player.displayArea.Height);
                 }
 
                 else

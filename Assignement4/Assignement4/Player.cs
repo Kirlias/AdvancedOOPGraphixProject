@@ -73,7 +73,7 @@ namespace Assignement4
                 case Direction.Right:
                     {
                         //keeps the player off the right wall
-                        if (!(playerDisplayArea.Right >= (gamePlayArea.Width)))
+                        if (!(playerDisplayArea.Right >= (gamePlayArea.Width - 375)))
                         {
                             //Console.Write(playerDisplayArea.Right);
                             //move right on x
