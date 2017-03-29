@@ -47,10 +47,10 @@ namespace Assignement4
             this.level = level;
 
             //velocity
-            yVelocity = (this.level*2);
+            yVelocity = (this.level);
 
             //where to start a block
-            blockDisplayArea.Y = gameArea.Bottom + 40;
+            blockDisplayArea.Y = gameArea.Bottom + 10;
             //blockDisplayArea.Y = gameArea.Left;
 
         }

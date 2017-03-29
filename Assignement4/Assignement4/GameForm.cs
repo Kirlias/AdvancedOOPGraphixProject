@@ -97,6 +97,7 @@ namespace Assignement4
             timer.Stop();
             //clear the blocks
             blocks.Clear();
+            player.onBlock = false;
             
 
         }
